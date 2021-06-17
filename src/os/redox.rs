@@ -154,7 +154,7 @@ impl Target for Os {
                         })
                         .collect::<Vec<[usize; 2]>>();
 
-                    let program = e!(syscall::open(program.as_bytes(), O_RDONLY | O_CLOEXEC));
+                    let program = e!(syscall::open(&program, O_RDONLY | O_CLOEXEC));
 
                     let pid = e!(syscall::getpid());
                     e!(syscall::kill(pid, SIGSTOP));
